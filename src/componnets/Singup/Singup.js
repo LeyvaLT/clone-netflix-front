@@ -5,19 +5,18 @@ import {Mutation} from 'react-apollo';
 const CREATE_USER = gql`
     mutation signup ($name:String!, $email:String!, $lastname:String!, $password:String!, $birth_date:String!){
         signup(
-        name: $name
-        email: $email
-        lastname: $lastname
-        password: $password
-        birth_date: $birth_date
-        )
-    {
-    user{
-        id
-        email
-    }
-    token
-    }
+            name: $name
+            email: $email
+            lastname: $lastname
+            password: $password
+            birth_date: $birth_date
+        ){
+            user{
+                id
+                email
+            }
+            token
+        }
     }
 `;
 
@@ -62,7 +61,6 @@ class Signup extends Component {
     };
 
     render() {
-        //console.log("------>", this.state);
         return (
 
             <Mutation mutation={CREATE_USER}>
@@ -87,7 +85,7 @@ class Signup extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                            <label htmlFor="">Lastname</label>
+                                <label htmlFor="">Lastname</label>
                                 <input type="text" className="form-control" placeholder="Enter lastname"
                                        id="lastname"
                                        onChange={this.onImputChange}
@@ -95,7 +93,7 @@ class Signup extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                            <label htmlFor="">Password</label>
+                                <label htmlFor="">Password</label>
                                 <input type="password" className="form-control" placeholder="Enter Password"
                                        id="password"
                                        onChange={this.onImputChange}
@@ -103,7 +101,7 @@ class Signup extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                            <label htmlFor="">birth date</label>
+                                <label htmlFor="">birth date</label>
                                 <input type="date" className="form-control" placeholder="Enter birth date"
                                        id="birth_date"
                                        onChange={this.onImputChange}
