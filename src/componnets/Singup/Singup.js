@@ -13,8 +13,9 @@ class Signup extends Component {
         }
     }
 
-    onImputChange = () => {
+    onImputChange = (event) => {
         console.log("Me ejecute");
+        console.log(event.target.value);
     };
 
     render() {
