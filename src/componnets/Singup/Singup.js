@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import {Mutation} from 'react-apollo';
 
 const CREATE_USER = gql`
-    mutation signup ($name:Strign!, $email:String!, $lastname:String!, $password:String!, $birth_date:Strign!){
+    mutation signup ($name:String!, $email:String!, $lastname:String!, $password:String!, $birth_date:String!){
         signup(
         name: $name
         email: $email
