@@ -14,18 +14,27 @@ class Signup extends Component {
     }
 
     onImputChange = (event) => {
-        console.log("Me ejecute");
-        console.log(event.target.value);
+
+        //Destructuracion
+        let {id, value} = event.target;
+        this.setState({
+            [id]:value
+        });
+
+
     };
 
     render() {
+        console.log("------>", this.state);
         return (
             <div>
                 <form>
                     <div className="form-group">
                         <label htmlFor="">Email address</label>
                         <input type="email" className="form-control" placeholder="Enter email"
-                            onChange={this.onImputChange}
+                                id="email"
+                               onChange={this.onImputChange}
+                               value={this.state.email}
                         />
                     </div>
                 </form>
