@@ -7,6 +7,7 @@ import Signup from './componnets/Signup/Signup'
 import Home from './componnets/Home/Home'
 import isAuthenticated  from './resolvers/isAuthenticated'
 
+
 class Routes extends Component {
     render() {
 
