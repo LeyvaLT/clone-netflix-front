@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import gql from 'graphql-tag';
 import {Mutation} from 'react-apollo';
 
+// Equivalente a una Peticion REST
 const CREATE_USER = gql`
-    mutation signup ($name:String!, $email:String!, $lastname:String!, $password:String!, $birth_date:String!){
+    mutation signup($name:String!,$email:String!,$lastname:String!,$password:String!,$birth_date:String!){
         signup(
-            name: $name
-            email: $email
-            lastname: $lastname
-            password: $password
-            birth_date: $birth_date
+            name:$name
+            email:$email
+            lastname:$lastname
+            password:$password
+            birth_date:$birth_date
         ){
             user{
                 id
@@ -33,15 +34,11 @@ class Signup extends Component {
         }
     }
 
-    onImputChange = (event) => {
-
-        //Destructuracion
+    onInputChange = (event) => {
         let {id, value} = event.target;
         this.setState({
             [id]: value
         });
-
-
     };
 
     onFormSubmit = (event, signup) => {
@@ -56,56 +53,61 @@ class Signup extends Component {
                 password: this.state.password,
                 birth_date: this.state.birth_date
             }
-        });
-        alert("Todo chido carnal");
+        })
+            .then(response =>{
+                console.log(response);
+                alert('Todo chido carnal')
+            })
+            .catch(error =>{
+                console.log(error);
+                alert('Todo mal :(')
+            });
     };
 
     render() {
         return (
-
             <Mutation mutation={CREATE_USER}>
                 {(signup, {data}) => (
-
                     <div>
                         <form onSubmit={(e) => this.onFormSubmit(e, signup)}>
                             <div className="form-group">
-                                <label htmlFor="">Email address</label>
+                                <label>Email address</label>
                                 <input type="email" className="form-control" placeholder="Enter email"
                                        id="email"
-                                       onChange={this.onImputChange}
+                                       onChange={this.onInputChange}
                                        value={this.state.email}
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Name</label>
-                                <input type="text" className="form-control" placeholder="Enter name"
+                                <label>Name</label>
+                                <input type="text" className="form-control" placeholder="Enter a name"
                                        id="name"
-                                       onChange={this.onImputChange}
+                                       onChange={this.onInputChange}
                                        value={this.state.name}
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Lastname</label>
-                                <input type="text" className="form-control" placeholder="Enter lastname"
+                                <label>Last name</label>
+                                <input type="text" className="form-control" placeholder="Enter a lastname"
                                        id="lastname"
-                                       onChange={this.onImputChange}
+                                       onChange={this.onInputChange}
                                        value={this.state.lastname}
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Password</label>
-                                <input type="password" className="form-control" placeholder="Enter Password"
-                                       id="password"
-                                       onChange={this.onImputChange}
-                                       value={this.state.password}
+                                <label>Birth date</label>
+                                <input type="text" className="form-control" placeholder="Enter a birth date"
+                                       id="birth_date"
+                                       onChange={this.onInputChange}
+                                       value={this.state.birth_date}
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">birth date</label>
-                                <input type="date" className="form-control" placeholder="Enter birth date"
-                                       id="birth_date"
-                                       onChange={this.onImputChange}
-                                       value={this.state.birth_date}
+                                <label>Password</label>
+                                <input type="password" className="form-control" placeholder="Enter password"
+                                       id="password"
+                                       onChange={this.onInputChange}
+                                       value={this.state.password}
                                 />
                             </div>
                             <button type="submit" className="btn btn-success">Registrarme</button>
@@ -116,7 +118,6 @@ class Signup extends Component {
 
         )
     }
-
 }
 
 export default Signup;
