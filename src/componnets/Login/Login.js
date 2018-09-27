@@ -50,6 +50,7 @@ onInputChange = (event) => {
         })
             .then(response => {
                 localStorage.setItem('token',response.data.login.token);
+                this.props.history.push('/');
                 //console.log(response.data.login.token);
                 alert('Ya te logeaste carnal');
             })

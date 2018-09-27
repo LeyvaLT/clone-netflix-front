@@ -56,6 +56,7 @@ class Signup extends Component {
         })
             .then(response =>{
                 console.log(response);
+                this.props.history.push('/login');
                 alert('Todo chido carnal')
             })
             .catch(error =>{
