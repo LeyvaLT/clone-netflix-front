@@ -13,6 +13,15 @@ const QUERY_ME = gql`
         }
     }
 `;
+const QUERY_MOVIES = gql`
+    query movies {
+        movies{
+            id
+            title
+            poster
+        }
+    }
+`;
 
 
 class Home extends Component {
@@ -32,17 +41,36 @@ class Home extends Component {
             {({loading, err, data}) => {
                 if (loading) return 'Loading...';
                 if (err) return 'Error del Servicio';
-                return <Navbar name={data.me.name}/>
+                console.log(data);
+                return <Navbar name= {data.me.name} />
             }}
         </Query>
     );
 
+    renderMovies = () => (
+      <Query query={QUERY_MOVIES}>
+          {
+              ({loading, err, data}) => {
+                  if (loading) return 'Cargando tus peliculas...';
+                  if (err) return 'Error del Servicio';
+                  return data.movies.map(movie => <Movie
+                      title={movie.title}
+                      poster={movie.poster}
+                      id={movie.id}/>);
+              }
+          }
+      </Query>
+    );
+
+
     render() {
         return (
-            <div>
+            <div className="cover">
                 {this.getMe()}
-                <h1>Este es el home</h1>
-                <Movie/>
+                <div className="row container-fluid">
+                    {this.renderMovies()}
+                </div>
+
             </div>
         )
     }

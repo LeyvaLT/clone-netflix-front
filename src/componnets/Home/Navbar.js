@@ -1,18 +1,16 @@
 import  React, {Component} from 'react';
 import './Navbar.css';
+import {Link} from 'react-router-dom';
 
 class Navbar extends Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-            nombre : "Edgar Leyva"
-        }
-    }
-
     render() {
         return(
-            <div><h4 className="Navbar_name navbar navbar-expand-lg navbar-light bg-dark">Hola {this.state.nombre}</h4></div>
+            <nav className="Navbar_name navbar navbar-expand-lg navbar-light bg-dark">
+                <Link to="/me">
+                    <h4>Hola {this.props.name}</h4>
+                </Link>
+            </nav>
         )
     }
 

@@ -5,6 +5,8 @@ import client from './graphql'
 import Login from './componnets/Login/Login'
 import Signup from './componnets/Signup/Signup'
 import Home from './componnets/Home/Home'
+import MovieDetail from './componnets/Home/MovieDetail/MovieDetail'
+import Me from './componnets/Me/Me'
 import isAuthenticated  from './resolvers/isAuthenticated'
 
 
@@ -30,6 +32,8 @@ class Routes extends Component {
                         <PrivateRoute exact path='/' component={Home}/>
                         <Route exact path='/login' component={Login}/>
                         <Route exact path='/signup' component={Signup}/>
+                        <PrivateRoute exact path='/movie/:id' component={MovieDetail}/>
+                        <PrivateRoute exact path='/me' component={Me}/>
                     </main>
                 </ApolloProvider>
             </Router>

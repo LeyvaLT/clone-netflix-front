@@ -1,6 +1,7 @@
-.card_movie{
-    width: 13rem;
+.card-img-top{
+    height: 300px;
 }
-.img_movie{
-    padding: 0.4rem;
+
+.card {
+    margin-top: 2rem;
 }
