@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Check movie renders fine 1`] = `
+<div
+  className="col-md d-flex align-items-stretch"
+>
+  <div
+    className="card"
+  >
+    <img
+      alt="Card image cap"
+      className="card-img-top img_movie"
+      src="www.google.com"
+    />
+    <div
+      className="card-body"
+    >
+      <h5
+        className="card-title"
+      >
+        <strong>
+          La pelicula Test
+        </strong>
+      </h5>
+      <Link
+        className="btn btn-primary"
+        replace={false}
+        to="/movie/NWEKSDNJWHEOIW"
+      >
+        Ver
+      </Link>
+    </div>
+  </div>
+</div>
+`;
